@@ -48,6 +48,10 @@ def check_scenario(value_and_code):
 def check_failure_code(raid_value_active, raid_value_standby):
     value_and_code = {}
 
+    # debug only. put manual values and run in any n7k to test.
+    #raid_value_active = '0xe1'
+    #raid_value_standby = '0xd2'
+
     if raid_value_active == '0xf0':
         value_and_code['raid_value_active'] = 'no failure'
     elif raid_value_active == '0xe1':
@@ -109,7 +113,7 @@ def check_slot_numbers():
     active_slot_number = cli("show module | in active")
     active_slot_number = active_slot_number.strip(' ')[0]
     standby_slot_number = cli("show module | in standby")
-    standby_slot_number = active_slot_number.strip(' ')[0]
+    standby_slot_number = standby_slot_number.strip(' ')[0]
 
     return (active_slot_number, standby_slot_number)
 
